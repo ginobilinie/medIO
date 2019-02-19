@@ -51,8 +51,8 @@ def main():
     subpath = 'LGG'
     outfn = subpath + '*.h5'
     inputdir=path+subpath
-    scan=ScanFile(path, postfix='.h5')  
-    subfiles = scan.scan_subdir()  
+    scan=ScanFile(inputdir, postfix='.h5')  
+    subfiles = scan.scan_files()  
     p_threshold = 0.2
     for subfile in subfiles:
         if subfile==path or subfile=='..':
@@ -81,6 +81,7 @@ def main():
 #         copyfile(path+sdir+'/*fused*', sdir_fused)
 
 
+        print 'mv '+'%s'%subfile+' %s'%sfile_moving
         os.system('mv '+'%s'%subfile+' %s'%sfile_moving)
  
 #         os.system('cp /home/dongnie/warehouse/pelvicSeg/newData/pelvic_0209/%s/*fixed*'%sdir+' %s'%sdir_fixed)
